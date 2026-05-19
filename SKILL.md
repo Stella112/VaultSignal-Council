@@ -60,6 +60,33 @@ Run the agents in order. Each agent has one job and must return a compact score 
 | ExitSense Agent | 20 | `okx-dex-swap`, `okx-dex-token` | Prove the wallet can exit before allowing entry. |
 | Vault Risk Agent | 10 | `okx-agentic-wallet`, `okx-dex-market` | Apply wallet exposure, cooldown, drawdown, and PnL logging rules. |
 
+## Killer Feature: Agent Accountability Ledger
+
+Every trade or blocked signal must include an **Agent Accountability Ledger**. This is the council's memory: each agent records what it believed, what evidence it used, and what should be reviewed after the trade or watchlist period.
+
+The ledger makes the strategy auditable for human judges because it shows which agent protected the wallet, which agent supported entry, and which assumption should be checked later. It also proves discipline when the skill blocks a tempting signal.
+
+Use this ledger for every decision:
+
+| Agent | Claim | Evidence | Review trigger |
+| --- | --- | --- | --- |
+| Alpha Intake | Why this candidate is worth checking. | Source, token address, freshness. | Signal disappears or duplicate token found. |
+| Smart Money | Whether quality wallets support the trade. | Wallet count, sold ratio, trader data. | Smart wallets start selling. |
+| Shield | Whether the token is safe enough to buy. | Security scan, risk level, tags. | Risk level worsens or scan fails. |
+| Market Structure | Whether the market can absorb the trade. | Liquidity, holders, volume, concentration. | Liquidity drops or price extends. |
+| ExitSense | Whether the wallet can escape. | Entry quote, exit quote, price impact. | Exit quote fails or slippage rises. |
+| Vault Risk | Whether this wallet should take the risk now. | Balance, exposure, drawdown, cooldown. | Daily loss cap, duplicate exposure, or max hold. |
+
+After an exit or after the max hold time, produce a short review:
+
+```text
+Agent Accountability Review
+Outcome: <profit|loss|watchlist expired|blocked correctly>
+Best Agent: <agent and reason>
+Weakest Assumption: <agent and reason>
+Rule Adjustment: <one small future change or none>
+```
+
 ## Default Parameters
 
 Use these unless the user specifies stricter values.
@@ -253,6 +280,14 @@ Audit Log:
 - Security result: <short>
 - Exit result: <short>
 - Execution: <not requested|pending confirmation|broadcast tx hash>
+
+Agent Accountability Ledger:
+- Alpha Intake: <claim> | Evidence: <evidence> | Review: <trigger>
+- Smart Money: <claim> | Evidence: <evidence> | Review: <trigger>
+- Shield: <claim> | Evidence: <evidence> | Review: <trigger>
+- Market Structure: <claim> | Evidence: <evidence> | Review: <trigger>
+- ExitSense: <claim> | Evidence: <evidence> | Review: <trigger>
+- Vault Risk: <claim> | Evidence: <evidence> | Review: <trigger>
 ```
 
 ## Scam Receipt Format
@@ -269,6 +304,10 @@ Evidence:
 - <liquidity evidence>
 - <holder evidence>
 Action: No trade. Recheck only if the failing condition changes.
+Accountability:
+- Blocking Agent: <Shield|ExitSense|Vault Risk|Market Structure>
+- Protected From: <specific risk>
+- Recheck Trigger: <condition>
 ```
 
 ## Examples

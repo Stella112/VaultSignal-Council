@@ -115,6 +115,28 @@ Audit Result:
 - No continuous trading enabled.
 - No profit claim made.
 
+## Agent Accountability Ledger
+
+| Agent | Claim | Evidence | Review trigger |
+| --- | --- | --- | --- |
+| Alpha Intake | XDOG was worth checking. | X Layer hot-token list plus repeated signal appearances. | Remove from watch if hot-token and signal presence disappear. |
+| Smart Money | XDOG had enough smart-money confirmation for a tiny test. | Multiple smart-money signals with 3-4 trigger wallets. | Reduce confidence if sold ratio rises materially or trigger wallets dump. |
+| Shield | XDOG was safe enough for a tiny buy test. | Security scan returned no risk items; `riskControlLevel: 1`; honeypot false; tax 0. | Exit or block new buys if risk level worsens or scan returns warnings. |
+| Market Structure | Market quality supported a small test. | Liquidity about $488K, 36K holders, low cluster concentration. | Recheck if liquidity drops or holder concentration worsens. |
+| ExitSense | The wallet could exit the position. | Entry and exit quotes both succeeded before entry. | Exit or stop new buys if exit quote fails or slippage rises. |
+| Vault Risk | The position was acceptable for proof only. | Position size was 0.01 OKB with no automation loop. | Stop trading unless the user explicitly authorizes another test. |
+
+## Agent Accountability Review Plan
+
+At exit or watchlist expiry, review:
+
+```text
+Outcome: profit, loss, or proof-only close
+Best Agent: the agent whose evidence best predicted the result
+Weakest Assumption: the agent whose evidence aged fastest
+Rule Adjustment: one small threshold change, or none
+```
+
 ## Notes
 
 This run demonstrates skill executability and auditability for the Skill Quality Award. It is not investment advice and does not imply future profitability.

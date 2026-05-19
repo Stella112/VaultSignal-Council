@@ -32,6 +32,12 @@ The six agents are:
 
 The final output is a Universal Trade Credit Report or a Scam Receipt.
 
+## Killer Feature
+
+**Agent Accountability Ledger**: every decision records what each of the six agents believed, what evidence it used, and what should be reviewed later. This turns the skill from a one-shot signal bot into an auditable trading council.
+
+For accepted trades, the ledger explains why the entry was allowed and how the exit should be monitored. For rejected tokens, it explains which agent blocked the trade and what risk it protected against.
+
 ## Example Prompts
 
 ```text
@@ -44,6 +50,10 @@ Score this X Layer token before buying: <contract>
 
 ```text
 This token is trending in a community chat. Create a Scam Receipt before I trade.
+```
+
+```text
+Review the Agent Accountability Ledger for my last VaultSignal trade.
 ```
 
 ## Disclaimer
