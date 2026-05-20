@@ -4,12 +4,23 @@
 
 VaultSignal Council turns any token signal into a risk-scored, on-chain verified decision before Agentic Wallet is allowed to trade. It is built for the Agentic Wallet Trading Contest Skill Quality Award: OnchainOS-first, auditable, safety-forward, and already tested with a live X Layer trade.
 
+This repository now contains a **VaultSignal Suite**:
+
+1. **VaultSignal Council** - full six-agent trade scoring and execution council.
+2. **VaultSignal Shield** - standalone read-only scam/rug/liquidity defense skill.
+
 > Bring any alpha. VaultSignal decides if it deserves capital.
 
 Combined submission name:
 
 ```text
 VaultSignal Council: Universal Alpha Credit + Mistake Memory
+```
+
+Suite submission name:
+
+```text
+VaultSignal Suite: Universal Alpha Credit + Scam Defense + Mistake Memory
 ```
 
 ## One-Line Pitch
@@ -36,6 +47,7 @@ That shift is the project. VaultSignal is not a blind copy-trader, meme sniper, 
 
 - **Universal alpha intake**: accepts token signals from user prompts, contract addresses, trending lists, smart-money flows, Telegram/X/KOL mentions, new-token scans, and narrative spikes.
 - **Six-agent council**: separates discovery, smart-money validation, scam defense, market quality, exit liquidity, and wallet risk.
+- **Standalone Shield skill**: judges can test scam/rug detection without funding or trading.
 - **Exit-first trading**: simulates exit quality before entry. If the wallet cannot get out, it does not go in.
 - **Scam receipts**: rejected tokens produce useful evidence instead of silence.
 - **Agent Accountability Ledger**: records each agent's claim, evidence, and review trigger.
@@ -56,6 +68,10 @@ Submission brief:
 Core skill:
 
 [SKILL.md](SKILL.md)
+
+Standalone shield skill:
+
+[skills/vaultsignal-shield/SKILL.md](skills/vaultsignal-shield/SKILL.md)
 
 ## Live Test Evidence
 
@@ -228,7 +244,7 @@ Agent Accountability Ledger: ...
 
 ### Scam Receipt
 
-Used when a token fails.
+Used by both VaultSignal Council and VaultSignal Shield when a token fails.
 
 ```text
 VaultSignal Scam Receipt
@@ -274,6 +290,13 @@ VaultSignal-Council/
 |-- SUBMISSION.md
 |-- agents/
 |   `-- openai.yaml
+|-- skills/
+|   `-- vaultsignal-shield/
+|       |-- SKILL.md
+|       |-- agents/
+|       |   `-- openai.yaml
+|       `-- references/
+|           `-- shield-rubric.md
 |-- references/
 |   |-- reflection-loop.md
 |   |-- scoring.md
@@ -322,6 +345,10 @@ Score this token before buying: <contract>
 
 ```text
 This token is trending in a community chat. Create a Scam Receipt before I trade.
+```
+
+```text
+Run VaultSignal Shield on this X Layer token and do not trade.
 ```
 
 ```text

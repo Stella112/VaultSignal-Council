@@ -1,0 +1,3 @@
+display_name: VaultSignal Shield
+short_description: Standalone OnchainOS scam-defense and token rejection reports.
+default_prompt: Run VaultSignal Shield on this token and return a Scam Receipt or Shield Pass without trading.
