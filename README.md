@@ -1,10 +1,16 @@
 # VaultSignal Council
 
-**A six-agent Universal Alpha Credit System for OKX Agentic Wallet.**
+**A six-agent Universal Alpha Credit System with Mistake Memory for OKX Agentic Wallet.**
 
 VaultSignal Council turns any token signal into a risk-scored, on-chain verified decision before Agentic Wallet is allowed to trade. It is built for the Agentic Wallet Trading Contest Skill Quality Award: OnchainOS-first, auditable, safety-forward, and already tested with a live X Layer trade.
 
 > Bring any alpha. VaultSignal decides if it deserves capital.
+
+Combined submission name:
+
+```text
+VaultSignal Council: Universal Alpha Credit + Mistake Memory
+```
 
 ## One-Line Pitch
 
@@ -33,6 +39,7 @@ That shift is the project. VaultSignal is not a blind copy-trader, meme sniper, 
 - **Exit-first trading**: simulates exit quality before entry. If the wallet cannot get out, it does not go in.
 - **Scam receipts**: rejected tokens produce useful evidence instead of silence.
 - **Agent Accountability Ledger**: records each agent's claim, evidence, and review trigger.
+- **Mistake Memory Loop**: reviews past outcomes and turns the weakest assumption into one small future rule adjustment.
 - **OnchainOS-first**: every core data and transaction action depends on OnchainOS skills/tools.
 - **Live proof included**: a real X Layer test trade is documented in this repo.
 
@@ -161,6 +168,44 @@ Rule Adjustment: <one small future change or none>
 
 This makes the skill self-reviewing without pretending to guarantee profit.
 
+## Second Killer Feature: Mistake Memory Loop
+
+VaultSignal does not just produce a trade report and forget it. After an exit, failed quote, blocked signal, or watchlist expiry, it reviews what happened and writes a **Mistake Memory Entry**.
+
+The goal is not model training. The goal is operational learning:
+
+```text
+What did the council believe?
+What actually happened?
+Which agent had the weakest assumption?
+What one small rule should change next time?
+```
+
+Outcome classes:
+
+| Outcome | What it means |
+| --- | --- |
+| WIN_CONFIRMED | Trade thesis worked and exit remained available. |
+| LOSS_CONTAINED | Trade lost, but risk rules contained damage. |
+| EXIT_DEGRADED | Entry worked, but exit liquidity worsened. |
+| SHIELD_SAVED | A blocked trade later looked dangerous or illiquid. |
+| FALSE_BLOCK | A blocked token later improved enough to recheck. |
+| DATA_INCOMPLETE | OnchainOS data was missing, so no-trade was correct. |
+
+Example:
+
+```text
+Mistake Memory Entry
+Trade / Signal: XDOG on X Layer
+Outcome: WIN_CONFIRMED
+Best Agent: ExitSense
+Weakest Assumption: Market Structure - 24h momentum was weak
+Rule Adjustment: Keep tiny sizing when 24h trend is negative, even if liquidity is strong
+Do Not Change: Shield hard blocks remain mandatory
+```
+
+This strengthens the submission because judges can see the skill has a review loop. It learns from bad assumptions without bypassing safety.
+
 ## Output Types
 
 ### Trade Credit Report
@@ -230,6 +275,7 @@ VaultSignal-Council/
 |-- agents/
 |   `-- openai.yaml
 |-- references/
+|   |-- reflection-loop.md
 |   |-- scoring.md
 |   `-- accountability-ledger.md
 |-- reports/

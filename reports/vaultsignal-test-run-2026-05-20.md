@@ -137,6 +137,17 @@ Weakest Assumption: the agent whose evidence aged fastest
 Rule Adjustment: one small threshold change, or none
 ```
 
+## Mistake Memory Entry
+
+```text
+Trade / Signal: XDOG on X Layer
+Outcome: WIN_CONFIRMED
+Best Agent: ExitSense - entry and exit quotes both worked before execution and the exit route still quoted after the trade.
+Weakest Assumption: Market Structure - XDOG had strong liquidity and holders but weak 24h price momentum.
+Rule Adjustment: Keep position size tiny when 24h momentum is negative, even if liquidity and security are strong.
+Do Not Change: Shield hard blocks for high-risk tokens remain mandatory.
+```
+
 ## Notes
 
 This run demonstrates skill executability and auditability for the Skill Quality Award. It is not investment advice and does not imply future profitability.

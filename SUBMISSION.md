@@ -2,7 +2,7 @@
 
 ## Project
 
-VaultSignal Council: Universal Alpha Credit System for Agentic Wallet
+VaultSignal Council: Universal Alpha Credit + Mistake Memory
 
 ## Repository
 
@@ -10,7 +10,7 @@ https://github.com/Stella112/VaultSignal-Council
 
 ## One-Line Pitch
 
-VaultSignal Council turns any token signal into a six-agent Universal Trade Credit Report using OnchainOS smart-money, security, market, swap-route, and wallet checks before Agentic Wallet is allowed to trade.
+VaultSignal Council turns any token signal into a six-agent Universal Trade Credit Report using OnchainOS smart-money, security, market, swap-route, and wallet checks before Agentic Wallet is allowed to trade, then uses Mistake Memory to review outcomes and improve future rules.
 
 ## Why It Should Win
 
@@ -18,6 +18,7 @@ VaultSignal Council turns any token signal into a six-agent Universal Trade Cred
 - **Novel**: It uses a six-agent council and a Universal Trade Credit Score instead of a basic copy-trade or meme-snipe flow.
 - **Safety-forward**: Shield and ExitSense can block trades even when alpha looks attractive.
 - **Auditable**: Every decision outputs a Trade Credit Report, Scam Receipt, and Agent Accountability Ledger.
+- **Adaptive**: Mistake Memory reviews past outcomes and turns the weakest assumption into one small future rule adjustment.
 - **Executable**: A live X Layer test trade was completed and documented in `reports/vaultsignal-test-run-2026-05-20.md`.
 
 ## Killer Feature
@@ -32,6 +33,12 @@ Each of the six agents records:
 
 After exit or watchlist expiry, the skill can review which agent was most useful and which assumption should be adjusted.
 
+## Second Killer Feature
+
+**Mistake Memory Loop**
+
+After every exit, failed quote, blocked signal, or watchlist expiry, VaultSignal compares the original council assumptions against the outcome. It classifies the result as `WIN_CONFIRMED`, `LOSS_CONTAINED`, `EXIT_DEGRADED`, `SHIELD_SAVED`, `FALSE_BLOCK`, or `DATA_INCOMPLETE`, then proposes one small future rule adjustment. It never weakens hard safety blocks.
+
 ## Live Test Evidence
 
 Test trade:
@@ -45,6 +52,6 @@ The test used OnchainOS hot-token scan, smart-money signals, security scan, toke
 
 ## Suggested Submission Description
 
-VaultSignal Council is a six-agent strategy skill for Agentic Wallet. It accepts alpha from any source, verifies it through OnchainOS, and produces a Universal Trade Credit Score before any trade. The six agents cover Alpha Intake, Smart Money, Shield, Market Structure, ExitSense, and Vault Risk. The final output is a Trade Credit Report, Scam Receipt, and Agent Accountability Ledger, making every accepted or rejected trade auditable for judges.
+VaultSignal Council is a six-agent strategy skill for Agentic Wallet. It accepts alpha from any source, verifies it through OnchainOS, and produces a Universal Trade Credit Score before any trade. The six agents cover Alpha Intake, Smart Money, Shield, Market Structure, ExitSense, and Vault Risk. The final output is a Trade Credit Report, Scam Receipt, Agent Accountability Ledger, and Mistake Memory Entry, making every accepted or rejected trade auditable and reviewable for judges.
 
 This skill is designed for the Agentic Wallet Trading Competition because it prioritizes Solana/X Layer, blocks risk level 3+ tokens, ignores ineligible native/stable pairs for tournament logic, and records live proof using OnchainOS commands.

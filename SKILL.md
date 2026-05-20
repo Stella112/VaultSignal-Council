@@ -14,6 +14,8 @@ Universal Alpha Credit System for Agentic Wallet.
 
 VaultSignal Council converts any token signal into a **Universal Trade Credit Score** before allowing a trade. It accepts alpha from user prompts, contract addresses, smart-money feeds, trending tokens, Telegram/X/KOL mentions, volume spikes, or new-token scans, then uses OnchainOS as the source of truth for market data, security checks, wallet state, swap routing, and execution.
 
+Combined name: **VaultSignal Council: Universal Alpha Credit + Mistake Memory**.
+
 ## Non-Negotiable Rules
 
 - Use OnchainOS as the primary information and transaction layer.
@@ -86,6 +88,45 @@ Best Agent: <agent and reason>
 Weakest Assumption: <agent and reason>
 Rule Adjustment: <one small future change or none>
 ```
+
+## Learning Feature: Mistake Memory Loop
+
+After every exit, failed quote, blocked signal, or watchlist expiry, run the **Mistake Memory Loop**. This is a lightweight reflection layer that learns from past mistakes without retraining models or storing private secrets.
+
+The loop compares the original Agent Accountability Ledger against the outcome and produces exactly one small future rule adjustment.
+
+Use these outcome classes:
+
+| Outcome | Meaning | Required reflection |
+| --- | --- | --- |
+| `WIN_CONFIRMED` | Trade thesis worked and exit was available. | Preserve rules or tighten only if risk was high. |
+| `LOSS_CONTAINED` | Trade lost but stop/time/risk rules contained damage. | Identify the weakest agent assumption. |
+| `EXIT_DEGRADED` | Entry was okay but exit liquidity worsened. | Tighten ExitSense threshold or max position size. |
+| `SHIELD_SAVED` | A blocked trade later looked dangerous or illiquid. | Credit Shield/ExitSense and keep block rule. |
+| `FALSE_BLOCK` | A blocked token later became valid. | Add a recheck trigger, not a bypass. |
+| `DATA_INCOMPLETE` | OnchainOS scan/quote data was missing. | Keep no-trade default and retry later. |
+
+Rules for learning:
+
+- Make one small adjustment only. Do not rewrite the whole strategy.
+- Prefer stricter safety after losses, exit degradation, or missing data.
+- Never weaken Shield hard blocks for risk level 3+ / HIGH / CRITICAL buys.
+- Never store private keys, API keys, seed phrases, raw auth tokens, or hidden wallet credentials.
+- Keep the memory human-readable so judges can audit it.
+
+Output format:
+
+```text
+Mistake Memory Entry
+Trade / Signal: <token and chain>
+Outcome: <WIN_CONFIRMED|LOSS_CONTAINED|EXIT_DEGRADED|SHIELD_SAVED|FALSE_BLOCK|DATA_INCOMPLETE>
+Best Agent: <agent>
+Weakest Assumption: <agent + assumption>
+Rule Adjustment: <one future threshold/rule change>
+Do Not Change: <hard rule that remains protected>
+```
+
+When the user asks to run VaultSignal again, consult recent Mistake Memory entries before scoring new candidates. Apply only relevant rule adjustments for the same chain, token type, or failure class.
 
 ## Default Parameters
 
